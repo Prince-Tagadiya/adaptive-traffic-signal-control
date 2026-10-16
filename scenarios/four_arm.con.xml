@@ -1,0 +1,21 @@
+<connections>
+    <!-- North approach -->
+    <connection from="N_J0" to="J0_W" fromLane="0" toLane="0"/> <!-- Right -->
+    <connection from="N_J0" to="J0_S" fromLane="0" toLane="0"/> <!-- Straight -->
+    <connection from="N_J0" to="J0_E" fromLane="0" toLane="0"/> <!-- Left -->
+
+    <!-- South approach -->
+    <connection from="S_J0" to="J0_E" fromLane="0" toLane="0"/> <!-- Right -->
+    <connection from="S_J0" to="J0_N" fromLane="0" toLane="0"/> <!-- Straight -->
+    <connection from="S_J0" to="J0_W" fromLane="0" toLane="0"/> <!-- Left -->
+
+    <!-- East approach -->
+    <connection from="E_J0" to="J0_N" fromLane="0" toLane="0"/> <!-- Right -->
+    <connection from="E_J0" to="J0_W" fromLane="0" toLane="0"/> <!-- Straight -->
+    <connection from="E_J0" to="J0_S" fromLane="0" toLane="0"/> <!-- Left -->
+
+    <!-- West approach -->
+    <connection from="W_J0" to="J0_S" fromLane="0" toLane="0"/> <!-- Right -->
+    <connection from="W_J0" to="J0_E" fromLane="0" toLane="0"/> <!-- Straight -->
+    <connection from="W_J0" to="J0_N" fromLane="0" toLane="0"/> <!-- Left -->
+</connections>

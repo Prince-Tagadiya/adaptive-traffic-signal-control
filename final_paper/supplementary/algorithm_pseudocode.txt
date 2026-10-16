@@ -1,0 +1,190 @@
+================================================================================
+ALGORITHM 1: Multi-Factor Adaptive Traffic Signal Controller (Proposed C3)
+Target Journal: Journal of Intelligent Transportation Systems (Taylor & Francis)
+Implementation: Python 3.13 / Eclipse SUMO / TraCI API
+Status: FROZEN VALIDATION SPECIFICATION
+================================================================================
+
+INPUTS (Extracted at each discrete simulation step t with Delta_t = 1.0 s):
+  - Intersection incoming lanes L = {N_J0_0, S_J0_0, E_J0_0, W_J0_0} grouped into
+    orthogonal directions NS = {N, S} and EW = {E, W}.
+  - TraCI Lane API queries:
+      * Halting vehicle count Q_i(t) via getLastStepHaltingNumber(lane_id) [speed < 0.1 m/s]
+      * Vehicle IDs on lane V_i(t) via getLastStepVehicleIDs(lane_id)
+  - TraCI Vehicle API queries:
+      * Longitudinal position pos(v) via getLanePosition(v) [meters from link upstream]
+      * Speed spd(v) via getSpeed(v) [m/s]
+      * Accumulated waiting time wait(v) via getAccumulatedWaitingTime(v) [seconds]
+
+FROZEN PARAMETERS & CONSTANTS:
+  - Component Weights:
+      alpha   = 1.00   (Current queue anchor weight)
+      beta    = 0.75   (Upstream arrival pressure weight)
+      gamma   = 0.10   (Queue growth rate weight)
+      delta   = 0.25   (Accumulated waiting burden weight)
+      eta     = 0.25   (Continuous red-age fairness weight)
+      H       = 0.20   (Dimensionless hysteresis barrier)
+  - Normalization Reference Scales:
+      Q_ref   = 20.0 veh     (Link vehicle storage capacity)
+      A_ref   = 0.40 veh/s   (80% saturation flow rate)
+      W_ref   = 30.0 s       (HCM LOS C delay boundary)
+      R_ref   = 50.0 s       (Maximum green duration reference)
+      G_ref   = 0.50 veh/s   (Saturation accumulation rate)
+  - Temporal Observation Windows:
+      W_A     = 20 s         (Rolling arrival history buffer length)
+      W_G     = 10 s         (Backward finite-difference queue growth window)
+  - Operational & Safety Constraints:
+      G_min   = 15 s         (Minimum green hold interval)
+      G_max   = 50 s         (Maximum green hold ceiling)
+      Y       = 3 s          (Yellow clearance interval)
+      R_starve= 45 s         (Mandatory red starvation override threshold)
+
+INTERNAL STATE VARIABLES:
+  - phase_state in {NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW}
+  - elapsed_green_time: integer seconds in current green phase
+  - elapsed_yellow_time: integer seconds in current yellow phase
+  - consecutive_red[NS], consecutive_red[EW]: continuous red duration with queue
+  - queue_history[i]: circular FIFO buffer of Q_i(t) of length W_G + 1
+  - arrival_history[i]: circular FIFO buffer of inflow vehicle counts of length W_A + 1
+
+================================================================================
+CONTROL CYCLE PROCEDURE (Executed at each simulation second t = 1, 2, ...):
+================================================================================
+
+1. TRAFFIC STATE OBSERVATION:
+   FOR each incoming approach i in {N, S, E, W}:
+     a. Query halting queue:
+        Q_i(t) <- traci.lane.getLastStepHaltingNumber(lane_id_i)
+        Append Q_i(t) to queue_history[i]
+     
+     b. Query incoming upstream inflow (vehicles in advance zone pos < 100.0 m):
+        V_i <- traci.lane.getLastStepVehicleIDs(lane_id_i)
+        inflow_count <- count(v in V_i where traci.vehicle.getLanePosition(v) < 100.0)
+        Append inflow_count to arrival_history[i]
+        A_i(t) <- sum(arrival_history[i]) / length(arrival_history[i]) / 10.0
+     
+     c. Query accumulated waiting burden of halted vehicles:
+        halted_vehs <- {v in V_i : traci.vehicle.getSpeed(v) < 0.1}
+        IF |halted_vehs| > 0 THEN:
+          W_i(t) <- sum_{v in halted_vehs} traci.vehicle.getAccumulatedWaitingTime(v) / |halted_vehs|
+        ELSE:
+          W_i(t) <- 0.0
+
+2. DIMENSIONLESS STATE NORMALIZATION:
+   FOR each approach i in {N, S, E, W}:
+     q_i(t) <- min(Q_i(t) / Q_ref, 2.0)
+     a_i(t) <- min(A_i(t) / A_ref, 2.0)
+     w_i(t) <- min(W_i(t) / W_ref, 2.0)
+     
+     IF length(queue_history[i]) > W_G THEN:
+       g_raw <- (Q_i(t) - queue_history[i][0]) / float(W_G)
+       g_i(t) <- max(-1.0, min(1.0, g_raw / G_ref))
+     ELSE:
+       g_i(t) <- 0.0
+
+3. PHASE AGGREGATION & CONTINUOUS RED-AGE TRACKING:
+   Q_NS(t) <- Q_N(t) + Q_S(t)
+   Q_EW(t) <- Q_E(t) + Q_W(t)
+
+   IF phase_state in {EW_GREEN, EW_YELLOW} THEN:
+     IF Q_NS(t) > 0 THEN consecutive_red[NS] <- consecutive_red[NS] + 1
+     ELSE consecutive_red[NS] <- 0
+     consecutive_red[EW] <- 0
+   ELSE:  # phase_state in {NS_GREEN, NS_YELLOW}
+     IF Q_EW(t) > 0 THEN consecutive_red[EW] <- consecutive_red[EW] + 1
+     ELSE consecutive_red[EW] <- 0
+     consecutive_red[NS] <- 0
+
+   r_NS(t) <- min(consecutive_red[NS] / R_ref, 1.0)
+   r_EW(t) <- min(consecutive_red[EW] / R_ref, 1.0)
+
+   g_NS(t) <- max(0.0, g_N(t)) + max(0.0, g_S(t))
+   g_EW(t) <- max(0.0, g_E(t)) + max(0.0, g_W(t))
+
+4. COMPOSITE DIRECTIONAL PRIORITY CALCULATION:
+   Score_NS(t) <- alpha * (q_N(t) + q_S(t)) +
+                  beta  * (a_N(t) + a_S(t)) +
+                  gamma * g_NS(t) +
+                  delta * (w_N(t) + w_S(t)) +
+                  eta   * r_NS(t)
+
+   Score_EW(t) <- alpha * (q_E(t) + q_W(t)) +
+                  beta  * (a_E(t) + a_W(t)) +
+                  gamma * g_EW(t) +
+                  delta * (w_E(t) + w_W(t)) +
+                  eta   * r_EW(t)
+
+5. CONSTRAINED STATE-MACHINE DECISION LOGIC:
+
+   CASE phase_state OF:
+
+     NS_GREEN:
+       traci.trafficlight.setPhase(tl_id, 0)
+       elapsed_green_time <- elapsed_green_time + 1
+       
+       IF elapsed_green_time < G_min THEN:
+         decision <- "MIN_GREEN_HOLD"
+       ELSE:
+         IF elapsed_green_time >= G_max AND Q_EW(t) > 0 THEN:
+           decision <- "MAX_GREEN_EXCEEDED"
+           phase_state <- NS_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 1)
+         ELSE IF consecutive_red[EW] >= R_starve AND Q_EW(t) > 0 THEN:
+           decision <- "STARVATION_CEILING"
+           phase_state <- NS_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 1)
+         ELSE IF Score_EW(t) > (Score_NS(t) + H) THEN:
+           decision <- "PRESSURE_SWITCH_EW_HIGHER"
+           phase_state <- NS_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 1)
+         ELSE:
+           decision <- "PRESSURE_MAINTAIN_NS"
+
+     NS_YELLOW:
+       traci.trafficlight.setPhase(tl_id, 1)
+       elapsed_yellow_time <- elapsed_yellow_time + 1
+       decision <- "YELLOW_CLEARANCE"
+       IF elapsed_yellow_time >= Y THEN:
+         phase_state <- EW_GREEN
+         elapsed_green_time <- 0
+         traci.trafficlight.setPhase(tl_id, 2)
+
+     EW_GREEN:
+       traci.trafficlight.setPhase(tl_id, 2)
+       elapsed_green_time <- elapsed_green_time + 1
+       
+       IF elapsed_green_time < G_min THEN:
+         decision <- "MIN_GREEN_HOLD"
+       ELSE:
+         IF elapsed_green_time >= G_max AND Q_NS(t) > 0 THEN:
+           decision <- "MAX_GREEN_EXCEEDED"
+           phase_state <- EW_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 3)
+         ELSE IF consecutive_red[NS] >= R_starve AND Q_NS(t) > 0 THEN:
+           decision <- "STARVATION_CEILING"
+           phase_state <- EW_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 3)
+         ELSE IF Score_NS(t) > (Score_EW(t) + H) THEN:
+           decision <- "PRESSURE_SWITCH_NS_HIGHER"
+           phase_state <- EW_YELLOW
+           elapsed_yellow_time <- 0
+           traci.trafficlight.setPhase(tl_id, 3)
+         ELSE:
+           decision <- "PRESSURE_MAINTAIN_EW"
+
+     EW_YELLOW:
+       traci.trafficlight.setPhase(tl_id, 3)
+       elapsed_yellow_time <- elapsed_yellow_time + 1
+       decision <- "YELLOW_CLEARANCE"
+       IF elapsed_yellow_time >= Y THEN:
+         phase_state <- NS_GREEN
+         elapsed_green_time <- 0
+         traci.trafficlight.setPhase(tl_id, 0)
+
+6. RECORD DECISION & RETURN TELEMETRY
+================================================================================

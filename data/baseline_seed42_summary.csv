@@ -1,0 +1,2 @@
+seed,sim_duration_s,warmup_duration_s,eval_duration_s,total_vehicles_departed,total_vehicles_completed,eval_throughput_completed,avg_waiting_time_s,avg_travel_time_s,avg_queue_length_veh,max_queue_length_veh,avg_stops_per_veh,total_stops,mean_speed_mps,step_mean_speed_mps,avg_delay_s,total_delay_s,phase_step_counts
+42,1000,200,800,277,274,232,19.06,67.04,5.18,17,1.01,234,8.31,7.55,29.08,6747.64,"{0: 472, 1: 33, 2: 462, 3: 33}"

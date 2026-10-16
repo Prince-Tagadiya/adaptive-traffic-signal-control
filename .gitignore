@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# SUMO simulation output files
+*.out.xml
+*.log
+*.xml.gz
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Large zip archives
+*.zip
+
+# Raw step-level simulation data (too large for repository)
+data/simulation_data.csv
+data/simulation_run_seed42.csv
+data/baseline_seed42_raw.csv
+data/density_seed42_raw.csv
+data/timeseries_*.csv
+data/density_controller_decisions_seed42.csv
+data/proposed_controller_decisions_seed42.csv

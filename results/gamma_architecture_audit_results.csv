@@ -1,0 +1,5 @@
+gamma,composite_J,mean_wait_s,mean_yellow_s,mean_switches,mean_delay_s,mean_queue_veh,max_red_s,wait_medium,wait_high,wait_asym,wait_dynamic,switches_medium,switches_high,switches_asym,switches_dynamic
+0.0,0.91379,23.43,129.0,85.8,42.79,9.81,53.0,7.83,41.59,14.6,29.7,92,105,64,82
+0.1,0.86146,21.45,130.5,87.0,39.79,9.08,53.0,8.69,35.58,13.98,27.53,92,102,64,90
+0.2,1.06545,28.84,129.0,86.0,52.1,11.84,53.0,8.49,52.7,14.47,39.69,92,100,64,88
+0.3,0.9935,26.0,132.8,88.5,47.51,10.95,53.0,7.42,51.81,10.38,34.39,92,102,68,92

@@ -1,0 +1,6 @@
+seed,sim_duration_s,warmup_duration_s,vehicles_generated,vehicles_completed,eval_throughput,avg_waiting_time_s,avg_travel_time_s,avg_queue_length_veh,max_queue_length_veh,avg_stops_per_veh,total_stops,mean_speed_mps,avg_delay_s,total_delay_s
+42,1000.0,200.0,277.0,277.0,228.0,6.17,51.4,1.66,8.0,0.7,159.0,9.83,13.39,3052.86
+43,1000.0,200.0,269.0,269.0,224.0,6.57,51.28,1.67,7.0,0.69,154.0,9.86,13.53,3031.46
+44,1000.0,200.0,329.0,329.0,264.0,6.85,52.66,2.03,8.0,0.78,205.0,9.58,14.7,3880.53
+Mean,,,291.67,291.67,238.67,6.53,51.78,1.79,7.67,0.72,172.67,9.76,13.87,3321.62
+Std,,,32.58,32.58,22.03,0.34,0.76,0.21,0.58,0.05,28.11,0.15,0.72,484.15

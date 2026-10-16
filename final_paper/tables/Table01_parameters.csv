@@ -1,0 +1,18 @@
+Parameter,Symbol,Value,Unit,Role,Category
+alpha,alpha,1.0,dimensionless,Current halting queue weight (anchor),Component Weight
+beta,beta,0.75,dimensionless,Upstream arrival pressure weight,Component Weight
+gamma,gamma,0.1,dimensionless,Queue growth finite-difference weight,Component Weight
+delta,delta,0.25,dimensionless,Accumulated waiting burden weight,Component Weight
+eta,eta,0.25,dimensionless,Continuous red-age fairness weight,Component Weight
+H,H,0.2,dimensionless,Hysteresis switching barrier margin,Switching Dynamics
+Q_ref,Q_ref,20.0,veh,Queue reference scale (link capacity),Normalization Scale
+A_ref,A_ref,0.4,veh/s,Arrival rate reference scale (80% saturation),Normalization Scale
+W_ref,W_ref,30.0,s,Waiting time reference scale (HCM LOS C boundary),Normalization Scale
+R_ref,R_ref,50.0,s,Red age reference scale (G_max threshold),Normalization Scale
+G_ref,G_ref,0.5,veh/s,Queue growth reference scale (saturation accumulation),Normalization Scale
+W_A,W_A,20.0,s,Rolling arrival observation window,Observation Window
+W_G,W_G,10.0,s,Backward finite-difference queue growth window,Observation Window
+G_min,G_min,15.0,s,NEMA minimum green safety constraint,Safety Constraint
+G_max,G_max,50.0,s,NEMA maximum green hold constraint,Safety Constraint
+Y,Y,3.0,s,Yellow change clearance duration,Safety Constraint
+R_starve,R_starve,45.0,s,Mandatory red starvation override threshold,Safety Constraint

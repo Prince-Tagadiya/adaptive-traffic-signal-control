@@ -1,0 +1,15 @@
+scenario,comparison,metric,mean_diff,std_diff,ci_95_low,ci_95_high,t_stat,p_val_ttest,p_val_wilcoxon,cohen_d
+low,Proposed vs Fixed-Time,avg_waiting_time_s,-7.4,0.98,-8.61,-6.19,-16.93,7.136480881260422e-05,0.0625,-7.571
+low,Proposed vs Basic-Queue,avg_waiting_time_s,0.24,0.44,-0.31,0.79,1.232,0.28553249615015736,0.3125,0.551
+medium,Proposed vs Fixed-Time,avg_waiting_time_s,-9.63,1.85,-11.93,-7.33,-11.634,0.0003119423560610166,0.0625,-5.203
+medium,Proposed vs Basic-Queue,avg_waiting_time_s,-0.03,0.64,-0.83,0.76,-0.112,0.9163366503746833,1.0,-0.05
+high,Proposed vs Fixed-Time,avg_waiting_time_s,-29.62,10.0,-42.04,-17.2,-6.623,0.002695469350217334,0.0625,-2.962
+high,Proposed vs Basic-Queue,avg_waiting_time_s,1.09,5.0,-5.11,7.29,0.487,0.6517388265938928,0.625,0.218
+oversaturated,Proposed vs Fixed-Time,avg_waiting_time_s,-15.77,11.7,-30.29,-1.24,-3.014,0.03939853614769084,0.125,-1.348
+oversaturated,Proposed vs Basic-Queue,avg_waiting_time_s,-0.34,6.2,-8.03,7.36,-0.121,0.909334570074126,1.0,-0.054
+asym_ns,Proposed vs Fixed-Time,avg_waiting_time_s,-43.83,5.21,-50.3,-37.35,-18.803,4.711047112250619e-05,0.0625,-8.409
+asym_ns,Proposed vs Basic-Queue,avg_waiting_time_s,-0.45,6.5,-8.52,7.61,-0.156,0.8834155134161114,1.0,-0.07
+asym_ew,Proposed vs Fixed-Time,avg_waiting_time_s,-54.17,6.48,-62.21,-46.13,-18.7,4.814204748264388e-05,0.0625,-8.363
+asym_ew,Proposed vs Basic-Queue,avg_waiting_time_s,-4.83,9.3,-16.38,6.72,-1.161,0.31009832149902194,0.8125,-0.519
+dynamic,Proposed vs Fixed-Time,avg_waiting_time_s,-29.6,5.99,-37.04,-22.16,-11.044,0.0003822384255492105,0.0625,-4.939
+dynamic,Proposed vs Basic-Queue,avg_waiting_time_s,-2.26,6.29,-10.08,5.55,-0.804,0.46622569004017483,0.4375,-0.36

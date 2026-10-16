@@ -1,0 +1,8 @@
+Scenario_ID,Demand_Regime,Arrival_Probability_NS,Arrival_Probability_EW,Total_Inflow_veh_per_h,Evaluation_Window_s,Description
+low,Symmetric (Balanced),0.04,0.04,576,200-1000,Light balanced demand across all four approaches
+medium,Symmetric (Balanced),0.08,0.08,1152,200-1000,Moderate balanced demand representative of typical urban flow
+high,Symmetric (Near-Capacity),0.14,0.14,2016,200-1000,Heavy balanced demand approaching intersection capacity
+oversaturated,Oversaturated,0.18,0.18,2592,200-1000,Severe demand exceeding intersection throughput capacity
+asym_ns,Asymmetric (Directional),0.14,0.03,1224,200-1000,Heavy North-South arterial flow with light East-West cross street
+asym_ew,Asymmetric (Directional),0.03,0.14,1224,200-1000,Heavy East-West arterial flow with light North-South cross street
+dynamic,Dynamic Surge,0.04->0.15->0.05,0.04->0.15->0.05,Variable (576-2160),200-1000,"Three-stage surge: 0-300s light, 300-700s peak surge, 700-1000s post-peak"

@@ -1,0 +1,2 @@
+controller,mean_compute_us,std_compute_us,min_compute_us,max_compute_us,decisions_per_second,total_decisions_profiled,real_time_budget_us,budget_utilization_pct
+Proposed-Adaptive,560.74,149.06,183.96,1270.79,1783.4,1000,1000000.0,0.0561

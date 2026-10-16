@@ -1,0 +1,13 @@
+<edges>
+    <!-- Inflow edges to central intersection J0 -->
+    <edge id="N_J0" from="N" to="J0" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="S_J0" from="S" to="J0" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="E_J0" from="E" to="J0" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="W_J0" from="W" to="J0" priority="2" numLanes="1" speed="13.89"/>
+
+    <!-- Outflow edges from central intersection J0 -->
+    <edge id="J0_N" from="J0" to="N" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="J0_S" from="J0" to="S" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="J0_E" from="J0" to="E" priority="2" numLanes="1" speed="13.89"/>
+    <edge id="J0_W" from="J0" to="W" priority="2" numLanes="1" speed="13.89"/>
+</edges>
