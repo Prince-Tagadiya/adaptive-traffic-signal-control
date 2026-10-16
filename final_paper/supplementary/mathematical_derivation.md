@@ -2,7 +2,7 @@
 
 **Document**: `final_paper/supplementary/mathematical_derivation.md`  
 **Target Journal**: *Journal of Intelligent Transportation Systems: Technology, Planning, and Operations* (Taylor & Francis)  
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Implementation Verification**: Exact 1-to-1 correspondence with `controllers/proposed_adaptive_controller.py`
 

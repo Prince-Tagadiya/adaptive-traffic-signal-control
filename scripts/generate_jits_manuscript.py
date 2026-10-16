@@ -72,8 +72,8 @@ def build_latex_manuscript():
 \title{\textbf{Multi-Factor Adaptive Traffic Signal Control Under Directional Demand Asymmetry and Dynamic Flow: Formulation, Stability Constraints, and Confirmatory Simulation Evaluation}}
 
 \author{
-    \textbf{Antigravity Research Consortium}\thanks{Corresponding Author. Simulation of Urban MObility (SUMO) and TraCI Autonomous Control Laboratory.} \\
-    Department of Civil and Environmental Engineering / Intelligent Transportation Systems Laboratory
+    \textbf{Prince Tagadiya} \\
+    Department of Civil and Environmental Engineering, Intelligent Transportation Systems Laboratory
 }
 
 \date{October 2026}
@@ -436,7 +436,7 @@ def build_docx_manuscript():
     # Authors
     p_author = doc.add_paragraph()
     p_author.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_author = p_author.add_run("Antigravity Research Consortium\nDepartment of Civil and Environmental Engineering\nIntelligent Transportation Systems Laboratory")
+    r_author = p_author.add_run("Prince Tagadiya\nDepartment of Civil and Environmental Engineering\nIntelligent Transportation Systems Laboratory")
     r_author.italic = True
     r_author.font.size = Pt(11)
 
@@ -775,7 +775,7 @@ def build_pdf_manuscript():
 
     # Title & Metadata
     story.append(Paragraph("Multi-Factor Adaptive Traffic Signal Control Under Directional Demand Asymmetry and Dynamic Flow: Formulation, Stability Constraints, and Confirmatory Simulation Evaluation", title_style))
-    story.append(Paragraph("Antigravity Research Consortium<br/>Department of Civil and Environmental Engineering, Intelligent Transportation Systems Laboratory<br/><b>Prepared for Submission to:</b> <i>Journal of Intelligent Transportation Systems (Taylor & Francis)</i> — October 2026", author_style))
+    story.append(Paragraph("Prince Tagadiya<br/>Department of Civil and Environmental Engineering, Intelligent Transportation Systems Laboratory<br/><b>Prepared for Submission to:</b> <i>Journal of Intelligent Transportation Systems (Taylor & Francis)</i> — October 2026", author_style))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#CBD5E0"), spaceAfter=12))
 
     # Abstract

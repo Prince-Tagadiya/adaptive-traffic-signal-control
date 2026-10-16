@@ -1,6 +1,6 @@
 # Scientific Findings, Research Decision, and Limitations
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Document**: Synthesis of Empirical Evidence and Publication Guidelines (Part AD)
 

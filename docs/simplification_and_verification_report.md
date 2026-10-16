@@ -1,6 +1,6 @@
 # Verification, Simplification, and Baseline Audit Report
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Document**: Synthesis of Controller Simplification, Webster Calibration, and Statistical Verification
 

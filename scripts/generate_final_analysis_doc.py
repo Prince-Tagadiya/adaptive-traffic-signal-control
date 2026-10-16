@@ -22,7 +22,7 @@ def generate_markdown():
     
     lines.append("# Phase 10: Final Statistical Analysis of Blind Test Set")
     lines.append("")
-    lines.append("**Authors**: Antigravity Research Team  ")
+    lines.append("**Authors**: Prince Tagadiya  ")
     lines.append("**Evaluation Phase**: Phase 10 — Blind Test Inferential Evaluation  ")
     lines.append("**Evaluation Date**: October 2026  ")
     lines.append("**Status**: FINAL INFERENTIAL AUDIT COMPLETE (Controller strictly frozen; zero modifications, zero re-tuning)  ")
@@ -378,7 +378,7 @@ def generate_markdown():
     lines.append("   Against basic queue control (C2), C3 does not achieve statistically significant waiting-time reductions after multiple testing correction ($p_{\\text{Holm}} = 1.0, q_{\\text{BH}} \\ge 0.24$). Instead, C3's definitive and consistent benefit over C2 lies in **signal stability**: across all seven scenarios, C3 achieves a **$4.6\\%$ to $20.3\\%$ statistically significant reduction in phase switch count** ($p < 0.028$ in all 7 scenarios). The composite objective's queue smoothing and hysteresis mechanisms effectively eliminate the high-frequency phase oscillations characteristic of naive queue controllers without increasing vehicle delay.")
     lines.append("")
     lines.append("### Prohibited Claims Audit")
-    lines.append("In strict compliance with confirmatory guidelines, the Antigravity Research Team explicitly affirms that:")
+    lines.append("In strict compliance with confirmatory guidelines, the authors explicitly affirm that:")
     lines.append("- The proposed controller is **NOT** claimed to be universally superior, optimal, or state-of-the-art.")
     lines.append("- The proposed controller does **NOT** demonstrate generalized superiority across all traffic conditions.")
     lines.append("- Performance results are **mixed**: C3 is highly advantageous under directional asymmetry and reduces phase transitions universally, but is matched or slightly outperformed in waiting time by simple fixed-time control under symmetric steady-state flow.")

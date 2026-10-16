@@ -1,6 +1,6 @@
 # Research Tables: Adaptive Signal Control Experimental Results
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Project**: Adaptive Traffic Signal Control using SUMO, Python, and TraCI
 

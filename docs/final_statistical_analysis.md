@@ -1,6 +1,6 @@
 # Phase 10: Final Statistical Analysis of Blind Test Set
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Evaluation Phase**: Phase 10 — Blind Test Inferential Evaluation  
 **Evaluation Date**: October 2026  
 **Status**: FINAL INFERENTIAL AUDIT COMPLETE (Controller strictly frozen; zero modifications, zero re-tuning)  
@@ -353,7 +353,7 @@ Based strictly on the inferential statistics from the blind evaluation set, **Hy
    Against basic queue control (C2), C3 does not achieve statistically significant waiting-time reductions after multiple testing correction ($p_{\text{Holm}} = 1.0, q_{\text{BH}} \ge 0.24$). Instead, C3's definitive and consistent benefit over C2 lies in **signal stability**: across all seven scenarios, C3 achieves a **$4.6\%$ to $20.3\%$ statistically significant reduction in phase switch count** ($p < 0.028$ in all 7 scenarios). The composite objective's queue smoothing and hysteresis mechanisms effectively eliminate the high-frequency phase oscillations characteristic of naive queue controllers without increasing vehicle delay.
 
 ### Prohibited Claims Audit
-In strict compliance with confirmatory guidelines, the Antigravity Research Team explicitly affirms that:
+In strict compliance with confirmatory guidelines, the authors explicitly affirm that:
 - The proposed controller is **NOT** claimed to be universally superior, optimal, or state-of-the-art.
 - The proposed controller does **NOT** demonstrate generalized superiority across all traffic conditions.
 - Performance results are **mixed**: C3 is highly advantageous under directional asymmetry and reduces phase transitions universally, but is matched or slightly outperformed in waiting time by simple fixed-time control under symmetric steady-state flow.

@@ -1,6 +1,6 @@
 # Experimental Methodology & Evaluation Protocol
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Document**: Methodological Specification for Adaptive Traffic Signal Research
 

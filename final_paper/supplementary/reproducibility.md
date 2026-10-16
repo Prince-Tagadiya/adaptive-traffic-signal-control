@@ -2,7 +2,7 @@
 
 **Document**: `final_paper/supplementary/reproducibility.md`  
 **Target Journal**: *Journal of Intelligent Transportation Systems* (Taylor & Francis)  
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Replication Guarantee**: Deterministic Bit-Level Reproducibility Across Identical Random Seeds
 

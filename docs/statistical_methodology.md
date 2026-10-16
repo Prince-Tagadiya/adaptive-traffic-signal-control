@@ -1,6 +1,6 @@
 # Rigorous Statistical Methodology & Experimental Unit Audit
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Document**: Formal Statistical Audit and Protocol Specification (Task 1)
 

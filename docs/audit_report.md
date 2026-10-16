@@ -1,6 +1,6 @@
 # Comprehensive Audit Report: Existing Signal Control Implementation & Methodology
 
-**Authors**: Antigravity Research Team  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Scope**: Full evaluation of `controllers/`, `simulation/runner.py`, `scripts/generate_routes.py`, `scripts/run_baseline_experiments.py`, `scripts/run_density_experiments.py`, and generated data files.
 

@@ -3,7 +3,7 @@
 **Document**: `final_paper/supplementary/project_audit.md`  
 **Target Journal**: *Journal of Intelligent Transportation Systems: Technology, Planning, and Operations* (Taylor & Francis)  
 **Date**: October 2026  
-**Auditor**: Antigravity Autonomous Research Team  
+**Auditor**: Prince Tagadiya  
 **Audit Status**: VERIFIED AND LOCKED (No code modifications, no parameter adjustments, strictly reproducible)
 
 ---
@@ -166,6 +166,6 @@ Based on the verified results in `results/statistical_primary_waiting_time.csv` 
 
 The undersigned audit confirms that the codebase and output data are 100% frozen, verified, and ready for publication synthesis.
 
-**Lead Auditor**: Antigravity Autonomous Research Agent  
+**Lead Auditor**: Prince Tagadiya  
 **Date**: October 2026  
 **Status**: APPROVED FOR JITS SUBMISSION PACKAGE CREATION

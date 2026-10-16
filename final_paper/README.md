@@ -3,7 +3,7 @@
 **Paper Title**: Multi-Factor Adaptive Traffic Signal Control Under Directional Demand Asymmetry and Dynamic Flow: Formulation, Stability Constraints, and Confirmatory Simulation Evaluation  
 **Target Journal**: *Journal of Intelligent Transportation Systems: Technology, Planning, and Operations* (Taylor & Francis)  
 **Journal URL**: [https://www.tandfonline.com/journals/gits18](https://www.tandfonline.com/journals/gits18)  
-**Authors**: Antigravity Research Consortium  
+**Authors**: Prince Tagadiya  
 **Date**: October 2026  
 **Status**: SUBMISSION-READY PACKAGE
 
