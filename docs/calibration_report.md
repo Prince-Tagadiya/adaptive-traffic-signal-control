@@ -1,7 +1,7 @@
 # Rigorous Clean Calibration & Architecture Audit Report
 
 **Status:** Completed & Frozen  
-**Evaluation Set Exposure:** STRICTLY ZERO (Seeds 42–46 were NOT accessed, evaluated, or analyzed)  
+**Evaluation Set Exposure:** ZERO during this calibration and architecture audit (Seeds 42–46 were NOT accessed). Note: seeds 42–46 had been used in earlier exploratory studies (pruning, hysteresis sweep, growth smoothing, sensitivity, noise), so the final evaluation is independent with respect to parameter values but not with respect to earlier design choices  
 **Calibration Suite:** Dedicated Seeds 101, 102, 103, 104  
 **Date:** 2026-10-04  
 
@@ -64,9 +64,9 @@ All reference scales and constraints were audited and classified into three cate
 
 | Parameter | Value | Classification | Theoretical / Engineering Justification | Calibration Decision |
 | :--- | :---: | :---: | :--- | :--- |
-| **$Q_{\text{ref}}$** | $20.0\,\text{veh}$ | **Class A** (Physical) | Approach link length $L=200\,\text{m}$ with average jam spacing $s_{\text{jam}} = 10\,\text{m/veh}$ gives max storage capacity $200/10 = 20\,\text{veh}$. | **FROZEN** |
+| **$Q_{\text{ref}}$** | $20.0\,\text{veh}$ | **Class A** (Physical) | Reference queue of 20 vehicles; at 7.5 m per vehicle (5.0 m length + 2.5 m minimum gap) this is about 150 m, roughly 62% of the 242.8 m approach lane (250 m nominal link). | **FROZEN** |
 | **$A_{\text{ref}}$** | $0.40\,\text{veh/s}$ | **Class A** (Physical) | Theoretical single-lane saturation headway is $2.0\,\text{s}$ ($1800\,\text{veh/h}$). At 80% operational efficiency, capacity is $1440\,\text{veh/h} = 0.40\,\text{veh/s}$. | **FROZEN** |
-| **$W_A$** | $20.0\,\text{s}$ | **Class A** (Physical) | Free-flow traversal time of $200\,\text{m}$ approach at $50\,\text{km/h}$ ($13.89\,\text{m/s}$) is $14.4\,\text{s}$. Adding junction deceleration yields a $20\,\text{s}$ physical look-ahead horizon. | **FROZEN** |
+| **$W_A$** | $20.0\,\text{s}$ | **Class A** (Physical) | Free-flow traversal time of the 242.8 m approach lane at $50\,\text{km/h}$ ($13.89\,\text{m/s}$) is about $17.5\,\text{s}$. Adding junction deceleration yields a $20\,\text{s}$ physical look-ahead horizon. | **FROZEN** |
 | **$W_G$** | $10.0\,\text{s}$ | **Class B** (Engineering) | Backward finite-difference window for numerical queue derivative filtering. | **FROZEN** |
 | **$G_{\text{ref}}$** | $0.50\,\text{veh/s}$ | **Class A** (Physical) | Saturation flow rate corresponding to maximum physical queue accumulation rate ($1800\,\text{veh/h}$). | **FROZEN** |
 | **$R_{\text{ref}}$** | $50.0\,\text{s}$ | **Class B** (Engineering) | Aligned with maximum green duration $G_{\text{max}} = 50\,\text{s}$. Under alternating two-phase control, max green on Phase 1 equals max red on Phase 2. | **FROZEN** |

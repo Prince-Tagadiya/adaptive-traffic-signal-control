@@ -130,10 +130,10 @@ def plot_fig02_geometry():
     ax.text(0, 0, "Junction J0\n[Signalized]", ha="center", va="center", fontsize=8, fontweight="bold")
 
     # Lane markings and labels
-    ax.text(0, 210, "North Approach (N_J0_0, 200m)", ha="center", fontsize=9, fontweight="bold")
-    ax.text(0, -215, "South Approach (S_J0_0, 200m)", ha="center", fontsize=9, fontweight="bold")
-    ax.text(210, 0, "East Approach\n(E_J0_0, 200m)", va="center", ha="left", fontsize=9, fontweight="bold")
-    ax.text(-215, 0, "West Approach\n(W_J0_0, 200m)", va="center", ha="right", fontsize=9, fontweight="bold")
+    ax.text(0, 210, "North Approach (N_J0_0, 250m)", ha="center", fontsize=9, fontweight="bold")
+    ax.text(0, -215, "South Approach (S_J0_0, 250m)", ha="center", fontsize=9, fontweight="bold")
+    ax.text(210, 0, "East Approach\n(E_J0_0, 250m)", va="center", ha="left", fontsize=9, fontweight="bold")
+    ax.text(-215, 0, "West Approach\n(W_J0_0, 250m)", va="center", ha="right", fontsize=9, fontweight="bold")
 
     # Detection zones
     # Upstream arrival zone (x in [100, 200])

@@ -3,7 +3,7 @@
 **Status:** ALL PARAMETERS AND ARCHITECTURAL WEIGHTS STRICTLY FROZEN  
 **Freezing Timestamp:** 2026-10-04T12:58:00  
 **Target Evaluation Set:** Blind Test Set (Seeds 42–46)  
-**Exposure to Test Set During Calibration & Architecture Audit:** ZERO  
+**Exposure to Test Set During Calibration & Architecture Audit:** ZERO (seeds 42–46 had been used in earlier exploratory studies before the clean recalibration; see docs/calibration_report.md)  
 
 ---
 
@@ -17,11 +17,11 @@
 | **`delta`** | `0.25` | dimensionless | Clean Calibration Suite (Seeds 101–104) | Pre-declared Loss $J(\theta)$ & Tie-Breaker | **YES** |
 | **`eta`** | `0.25` | dimensionless | Clean Calibration Suite (Seeds 101–104) | Pre-declared Loss $J(\theta)$ & Tie-Breaker | **YES** |
 | **`H`** | `0.20` | dimensionless | Clean Calibration Suite (Seeds 101–104) | Pre-declared Loss $J(\theta)$ & Tie-Breaker | **YES** |
-| **`Q_ref`** | `20.0` | vehicles | Physical Approach Geometry | Derived: Link length $200\,\text{m}$ / $10\,\text{m}$ jam spacing (Class A) | **YES** |
+| **`Q_ref`** | `20.0` | vehicles | Physical Approach Geometry | Reference queue: 20 vehicles is about 150 m at 7.5 m per vehicle, ~62% of the 242.8 m lane (Class A) | **YES** |
 | **`A_ref`** | `0.40` | vehicles / second | Highway Capacity Theory | Derived: 80% Saturation Flow $1440\,\text{veh/h}$ (Class A) | **YES** |
 | **`W_ref`** | `30.0` | seconds | Highway Capacity Manual (HCM 2016) | Standard Practice: HCM Level of Service C Boundary (Class C Rule) | **YES** |
 | **`R_ref`** | `50.0` | seconds | Signal Timing Engineering Bounds | Constraint: Matched to Max Green $G_{\text{max}} = 50\,\text{s}$ (Class B) | **YES** |
-| **`W_A`** | `20.0` | seconds | Approach Kinematics | Derived: Physical link travel time $200\,\text{m} / 13.89\,\text{m/s} \approx 14.4\,\text{s} \rightarrow 20\,\text{s}$ (Class A) | **YES** |
+| **`W_A`** | `20.0` | seconds | Approach Kinematics | Derived: physical lane travel time $242.8\,\text{m} / 13.89\,\text{m/s} \approx 17.5\,\text{s} \rightarrow 20\,\text{s}$ (Class A) | **YES** |
 | **`W_G`** | `10.0` | seconds | Discrete Derivative Window | Standard Practice: 10s backward difference for queue rate estimation | **YES** |
 | **`G_ref`** | `0.50` | vehicles / second | Saturation Discharge Flow | Derived: Single-lane saturation accumulation limit (Class A) | **YES** |
 | **`G_min`** | `15.0` | seconds | NEMA / MUTCD Standards | Structural Safety: Minimum Driver Expectancy & Pedestrian Crossing (Class B) | **YES** |

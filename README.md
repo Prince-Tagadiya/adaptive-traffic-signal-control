@@ -43,14 +43,14 @@ traffic_signal_research/
 ├── scripts/
 │   ├── generate_routes.py               # Demand profile generator
 │   ├── run_research_experiments.py      # Full experiment suite runner
-│   ├── run_final_test_evaluation.py     # Blind test set evaluation (seeds 42–46)
+│   ├── run_final_test_evaluation.py     # Final test set evaluation (seeds 42–46)
 │   ├── compute_final_statistical_analysis.py # Phase 10 statistical analysis
 │   ├── generate_final_paper_figures.py  # Publication figure generator
 │   ├── generate_jits_manuscript.py      # LaTeX manuscript generator
 │   └── plot_research_results.py         # Research results plotter
 ├── results/                             # CSV datasets from all experiments
-│   ├── final_test_results_per_seed.csv  # Blind test per-seed results (primary)
-│   ├── final_test_summary.csv           # Blind test summary statistics
+│   ├── final_test_results_per_seed.csv  # Final test per-seed results (primary)
+│   ├── final_test_summary.csv           # Final test summary statistics
 │   ├── statistical_primary_waiting_time.csv # Paired statistical tests (primary metric)
 │   ├── statistical_secondary_metrics.csv    # Secondary metric tests
 │   ├── effect_size_summary.csv          # Cohen's d and percentage change
@@ -117,9 +117,9 @@ Controllers never generate traffic dynamically, eliminating stochastic demand di
 - **Cohort B**: Vehicle departs < 200 s AND arrives ≥ 200 s (boundary-crossing cohort)
 - **Cohort C**: Discarded (pure warm-up vehicles)
 
-### 4.3 Blind Test Protocol
+### 4.3 Final Test Protocol
 - **Calibration seeds**: 101, 102, 103, 104 (parameters frozen before any test evaluation)
-- **Test seeds**: 42, 43, 44, 45, 46 (blind; never seen during calibration)
+- **Test seeds**: 42, 43, 44, 45, 46 (not used in the calibration or the architecture audit; they had been used in earlier exploratory studies, see docs/calibration_report.md)
 - **Scenarios**: low, medium, high, oversaturated, asym_ns, asym_ew, dynamic
 
 ### 4.4 Statistical Analysis
@@ -149,7 +149,7 @@ python scripts/generate_routes.py
 python scripts/run_research_experiments.py
 ```
 
-### 5.4 Run Blind Test Evaluation
+### 5.4 Run Final Test Evaluation
 ```bash
 python scripts/run_final_test_evaluation.py
 ```
@@ -171,7 +171,7 @@ python scripts/run_gui.py
 
 ---
 
-## 6. Key Empirical Results (Blind Test Set, Seeds 42–46)
+## 6. Key Empirical Results (Final Test Set, Seeds 42–46)
 
 | Scenario | C3 vs C0 (Fixed-Time) | C3 vs C1 (Webster) | C3 vs C2 (Basic Queue) |
 |----------|-----------------------|--------------------|------------------------|

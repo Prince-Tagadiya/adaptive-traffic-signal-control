@@ -57,7 +57,7 @@ Before implementing or proposing any adaptive signal controller, a rigorous audi
 
 ### 8. Warm-up / Evaluation Methodology
 - **Implementation**: Total duration $1000\text{s}$, warm-up duration $200\text{s}$, evaluation duration $800\text{s}$.
-- **Finding**: Warm-up duration of $200\text{s}$ is adequate for the 200m approach links (free-flow traversal time $\approx 15\text{s}$). However, data isolation at the boundary was flawed.
+- **Finding**: Warm-up duration of $200\text{s}$ is adequate for the 250 m approach links (242.8 m lane, free-flow traversal time $\approx 17.5\text{s}$). However, data isolation at the boundary was flawed.
 
 ### 9. How Vehicles Crossing the Warm-up Boundary are Treated
 - **Legacy Issue**: Vehicles entering at $t=180\text{s}$ and leaving at $t=230\text{s}$ were grouped with vehicles departing at $t=250\text{s}$.

@@ -8,8 +8,11 @@ Mathematically grounded, lightweight adaptive controller combining:
 4. Continuous Red-Time Aging / Fairness: r_i(t) = min(R_i(t) / R_ref, 1.0)
 5. Hysteresis Switching Barrier: H = 0.20 (Frozen via Clean Calibration)
 
-Explicitly Omits (Pruned based on empirical validation):
-- Queue Growth derivative (noisy discrete counting derivative)
+Queue growth (added after the calibration-only architecture audit):
+6. Normalized positive queue growth g_i(t) = clip((Q_i(t) - Q_i(t-W_G)) / W_G / G_ref, -1, 1),
+   weighted by gamma = 0.10 (used only when gamma > 0).
+
+Not included:
 - Unconstrained predictive demand backlog (redundant on single-lane approaches)
 
 NEMA Safety Constraints:
@@ -60,7 +63,7 @@ class ProposedAdaptiveSignalController(BaseSignalController):
         eta: float = 0.25,         # Continuous fairness / red-age weight (Calibrated)
         hysteresis: float = 0.20,  # Switching barrier H (Calibrated)
         # Normalization Reference Constants
-        q_ref: float = 20.0,       # Class A: Link length 200m / 10m spacing
+        q_ref: float = 20.0,       # Class A: about 150 m of queue at 7.5 m per vehicle (5.0 m + 2.5 m gap), ~62% of the 242.8 m approach lane
         a_ref: float = 0.40,       # Class A: 80% saturation flow (1440 veh/h)
         w_ref: float = 30.0,       # Class C: HCM LOS C boundary threshold
         r_ref: float = 50.0,       # Class B: Engineering constraint (G_max)
